@@ -3,8 +3,14 @@ import FooterLink from "@/components/Forms/FooterLink"
 import InputField from "@/components/Forms/inputField"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { signInWithEmail } from "@/lib/actions/auth.actions"
+
+
 const SignIn = () => {
 
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -19,14 +25,20 @@ const SignIn = () => {
     mode: "onBlur",
   });
   const onSubmit: (data: SignInFormData) => Promise<void> = async (
-    data: SignInFormData
-  ) => {
-    try {
-      console.log(data);
-    } catch (e) {
-      console.error(e);
+      data: SignInFormData
+    ) => {
+      try {
+  
+        const result = await signInWithEmail(data)
+        if(result.success) router.push('/')
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+        toast.error('SignIn failed', {
+          description: e instanceof Error ? e.message : "Failed to Sign In"
+        })
+      }
     }
-  };
   return (
     <>
       <h1 className="form-title">Login To Trade Connect </h1>
@@ -55,8 +67,8 @@ const SignIn = () => {
           error={errors.password}
           validation={{
             required: "Password is required",
-            minLength: 6,
-            maxLength: 12,
+            minLength: 8,
+            maxLength: 128,
           }}
         />
 
@@ -79,3 +91,6 @@ const SignIn = () => {
 }
 
 export default SignIn
+
+
+// : (data: SignInFormData) => Promise<void>

@@ -1,4 +1,4 @@
-import TradingViewWidget from '@/components/TradingViewWidget'
+import TradeViewWrapper from "@/components/TradeViewWrapper"
 import { HEATMAP_WIDGET_CONFIG, MARKET_DATA_WIDGET_CONFIG, MARKET_OVERVIEW_WIDGET_CONFIG, TOP_STORIES_WIDGET_CONFIG } from '@/lib/constants'
 import React from 'react'
 
@@ -11,7 +11,7 @@ const Home = () => {
 
         {/* MARKET STOCK CHART */}
         <div className="md:col-span-1 xl:col-span-1 mt-8">
-          <TradingViewWidget
+          <TradeViewWrapper
             title="Market Stock Chart"
             scriptUrl={`${scriptUrl}market-overview.js`}
             config={MARKET_OVERVIEW_WIDGET_CONFIG}
@@ -22,7 +22,7 @@ const Home = () => {
 
         {/* STOCK HEATMAP */}
         <div className="md:col-span xl:col-span-2">
-          <TradingViewWidget
+          <TradeViewWrapper
             title="Stock Heatmap"
             scriptUrl={`${scriptUrl}stock-heatmap.js`}
             config={HEATMAP_WIDGET_CONFIG}
@@ -36,7 +36,7 @@ const Home = () => {
 
         {/* MARKET STOCK CHART */}
         <div className="h-full md:col-span-1 xl:col-span-1">
-          <TradingViewWidget
+          <TradeViewWrapper
             scriptUrl={`${scriptUrl}timeline.js`}
             config={TOP_STORIES_WIDGET_CONFIG}
             className='custom-chart'
@@ -46,7 +46,7 @@ const Home = () => {
 
         {/* STOCK HEATMAP */}
         <div className="h-full md:col-span-1 xl:col-span-2">
-          <TradingViewWidget
+          <TradeViewWrapper
             scriptUrl={`${scriptUrl}market-quotes.js`}
             config={MARKET_DATA_WIDGET_CONFIG}
             height={600}
