@@ -22,7 +22,7 @@ export async function getWatchlistSymbolsByEmail(email: string): Promise<string[
     const items = await Watchlist.find({ userId }, { symbol: 1 }).lean();
     return items.map((i) => String(i.symbol));
   } catch (err) {
-    console.error('getWatchlistSymbolsByEmail error:', err);
+    console.error('getWatchlistSymbolsByEmail error:', err instanceof Error ? err.message : String(err));
     return [];
   }
 }
