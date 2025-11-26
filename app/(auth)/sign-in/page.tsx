@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import FooterLink from "@/components/Forms/FooterLink"
 import InputField from "@/components/Forms/inputField"
 import { Button } from "@/components/ui/button"
@@ -79,6 +80,12 @@ const SignIn = () => {
         >
           {isSubmitting ? "Logging In..." : "Log In"}
         </Button>
+        <p className="text-center text-sm text-neutral-400">
+          Forgot password?{" "}
+          <Link className="text-yellow-300 hover:underline" href="/forgot-password">
+            Reset it
+          </Link>
+        </p>
         <FooterLink
           text="Don't have an account?"
           linkText="Create an account"

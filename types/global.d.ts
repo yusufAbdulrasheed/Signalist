@@ -4,6 +4,25 @@ declare global {
         password: string;
     };
 
+    type ForgotPasswordFormData = {
+        email: string;
+    };
+
+    type VerifyOtpFormData = {
+        email: string;
+        otp: string;
+    };
+
+    type ResetPasswordFormInputs = {
+        newPassword: string;
+        confirmPassword: string;
+    };
+
+    type ResetPasswordPayload = {
+        resetSessionToken: string;
+        newPassword: string;
+    };
+
     type SignUpFormData = {
         fullName: string;
         email: string;

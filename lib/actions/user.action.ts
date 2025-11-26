@@ -20,3 +20,11 @@ export const getAllUsersForNewsEmail = async () => {
     return [];
   }
 };
+
+// export const updateUserRole = async (email: string, role: string) => {
+//   try{
+//     await betterAuthDB.collection("user").updateOne({ email}, { $set: { role }})
+//   } catch (e){
+//     console.error("Error updating user role:", e instanceof Error ? e.message : String(e))
+//   }
+// }
