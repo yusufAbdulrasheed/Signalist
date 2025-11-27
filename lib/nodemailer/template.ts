@@ -1108,3 +1108,57 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
     </table>
 </body>
 </html>`;
+
+export const PASSWORD_RESET_OTP_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Reset OTP</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #050505;
+        color: #f9fafb;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 32px;
+        background-color: #141414;
+        border: 1px solid #30333a;
+        border-radius: 12px;
+      }
+      .otp {
+        font-size: 32px;
+        letter-spacing: 12px;
+        font-weight: 700;
+        color: #fdd458;
+        text-align: center;
+        margin: 24px 0;
+      }
+      p {
+        line-height: 1.6;
+        color: #e5e7eb;
+      }
+      .footer {
+        margin-top: 32px;
+        font-size: 12px;
+        color: #9ca3af;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p>Hi {{name}},</p>
+      <p>We received a request to reset the password for your Trade Connect account.</p>
+      <p>Use the one-time password below within the next {{expiry}} minutes:</p>
+      <div class="otp">{{otp}}</div>
+      <p>If you didn't request this reset, you can safely ignore this email.</p>
+      <p class="footer">© ${new Date().getFullYear()} Trade Connect</p>
+    </div>
+  </body>
+</html>`;
