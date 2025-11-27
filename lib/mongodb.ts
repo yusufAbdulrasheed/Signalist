@@ -1,13 +1,24 @@
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("MONGODB_URI is missing");
+const uri = process.env.MONGODB_URI!;
+const dbName = process.env.MONGODB_DB_NAME!;
+
+// Global variable to store the client across hot reloads (Next.js)
+declare global {
+  // eslint-disable-next-line no-var
+  var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
-if (!process.env.MONGODB_DB_NAME) {
-  throw new Error("MONGODB_DB_NAME is missing");
+let clientPromise: Promise<MongoClient>;
+
+if (!global._mongoClientPromise) {
+  const client = new MongoClient(uri);
+  global._mongoClientPromise = client.connect();
 }
 
-const client = new MongoClient(process.env.MONGODB_URI);
+clientPromise = global._mongoClientPromise;
 
-export const betterAuthDB = client.db(process.env.MONGODB_DB_NAME);
+export async function getDB() {
+  const client = await clientPromise;
+  return client.db(dbName);
+}

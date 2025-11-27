@@ -1,10 +1,11 @@
 "use server";
 
-import { betterAuthDB } from "@/lib/mongodb";
+import { getDB } from "@/lib/mongodb";
 
 export const getAllUsersForNewsEmail = async () => {
   try {
-    const users = await betterAuthDB
+    const db = await getDB();
+    const users = await db
       .collection("user")
       .find({ email: { $exists: true, $ne: null } })
       .project({ _id: 1, email: 1, name: 1 })
