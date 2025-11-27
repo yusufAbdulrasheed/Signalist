@@ -2,7 +2,6 @@ import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { nextCookies } from "better-auth/next-js";
 import { getDB } from "@/lib/mongodb";
-import { betterAuthDB } from "@/lib/mongodb";
 import { sendPasswordResetOtpEmail } from "@/lib/nodemailer";
 import {
   createPasswordResetRequest,
@@ -45,15 +44,6 @@ export const getAuth = async () => {
                 });
             },
         },
-
-    emailAndPassword: {
-      enabled: true,
-      disableSignUp: false,
-      requireEmailVerification: false,
-      minPasswordLength: 8,
-      maxPasswordLength: 128,
-      autoSignIn: true,
-    },
 
     plugins: [nextCookies()],
   });

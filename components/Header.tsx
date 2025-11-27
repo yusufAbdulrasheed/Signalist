@@ -29,12 +29,12 @@ const Header = ({ user }: { user: User }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
+          {/* <Link
             href="/dashboard"
             className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 text-xs font-medium text-yellow-200 hover:bg-yellow-400/20 transition-colors"
           >
             Live dashboard
-          </Link>
+          </Link> */}
           <UserDropDown user={user} />
         </div>
       </div>
