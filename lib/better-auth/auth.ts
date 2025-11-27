@@ -1,6 +1,7 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { nextCookies } from "better-auth/next-js";
+import { getDB } from "@/lib/mongodb";
 import { betterAuthDB } from "@/lib/mongodb";
 import { sendPasswordResetOtpEmail } from "@/lib/nodemailer";
 import {
@@ -10,14 +11,15 @@ import {
 
 let authInstance: ReturnType<typeof betterAuth> | null = null;
 
-export const getAuth = () => {
-    if (authInstance) return authInstance;
+export const getAuth = async () => {
+  if (authInstance) return authInstance;
 
-    authInstance = betterAuth({
-        database: mongodbAdapter(betterAuthDB),
-        secret: process.env.BETTER_AUTH_SECRET,
-        baseURL: process.env.BETTER_AUTH_URL,
+  const db = await getDB();
 
+  authInstance = betterAuth({
+    database: mongodbAdapter(db),
+    secret: process.env.BETTER_AUTH_SECRET,
+    baseURL: process.env.BETTER_AUTH_URL,
         emailAndPassword: {
             enabled: true,
             disableSignUp: false,
@@ -44,10 +46,19 @@ export const getAuth = () => {
             },
         },
 
-        plugins: [nextCookies()]
-    });
+    emailAndPassword: {
+      enabled: true,
+      disableSignUp: false,
+      requireEmailVerification: false,
+      minPasswordLength: 8,
+      maxPasswordLength: 128,
+      autoSignIn: true,
+    },
 
-    return authInstance;
+    plugins: [nextCookies()],
+  });
+
+  return authInstance;
 };
 
-export const auth = getAuth();
+export const auth = await getAuth();

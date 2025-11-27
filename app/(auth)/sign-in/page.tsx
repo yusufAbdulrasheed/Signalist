@@ -31,7 +31,7 @@ const SignIn = () => {
       try {
   
         const result = await signInWithEmail(data)
-        if(result.success) router.push('/')
+        if(result.success) router.push('/dashboard')
         console.log(data);
       } catch (e) {
         console.error(e);
