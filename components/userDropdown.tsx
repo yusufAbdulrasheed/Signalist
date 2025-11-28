@@ -14,7 +14,7 @@ import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
 import {signOut} from '@/lib/actions/auth.actions'
 
-const userDropdown = ({ user}: { user: User}) => {
+const UserDropDown = ({ user}: { user: User}) => {
   const router = useRouter();
 
   const handleSignOut = async () => {
@@ -72,4 +72,4 @@ const userDropdown = ({ user}: { user: User}) => {
   );
 };
 
-export default userDropdown;
+export default UserDropDown;
