@@ -19,7 +19,7 @@ const HomePage = async () => {
 
   return (
     <main className="flex flex-col min-h-screen text-gray-100">
-      {user && <Header user={user} />}
+      <Header user={user as User} />
       <Hero isAuthenticated={!!user} />
       <section id="explore">
         <Features />

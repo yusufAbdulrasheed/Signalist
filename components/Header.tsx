@@ -3,7 +3,7 @@ import Link from "next/link";
 import NavItems from "./NavItems";
 import UserDropDown from "./userDropdown";
 
-const Header = ({ user }: { user: User }) => {
+const Header = ({ user }: { user: User | null }) => {
   return (
     <header className="sticky top-0 header">
       <div className="container header-wrapper">
@@ -29,13 +29,24 @@ const Header = ({ user }: { user: User }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          {/* <Link
-            href="/dashboard"
-            className="hidden sm:inline-flex items-center rounded-full border border-yellow-400/30 bg-yellow-400/10 px-3 py-1 text-xs font-medium text-yellow-200 hover:bg-yellow-400/20 transition-colors"
-          >
-            Live dashboard
-          </Link> */}
-          <UserDropDown user={user} />
+          {user ? (
+            <UserDropDown user={user} />
+          ) : (
+            <div className="flex items-center gap-2">
+              <Link
+                href="/sign-in"
+                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-yellow-400 transition-colors"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/sign-up"
+                className="px-4 py-2 text-sm font-medium bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors"
+              >
+                Get Started
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>
