@@ -5,11 +5,13 @@ import UserDropDown from "./userDropdown";
 
 const Header = ({ user }: { user: User | null }) => {
   return (
-    <header className="sticky top-0 header">
-      <div className="container header-wrapper">
-        <div className="flex items-center gap-8">
+    <header className="sticky top-0 z-50 w-full bg-black/40 backdrop-blur-md">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3 md:py-4">
+        
+        {/* Left Section: Logo + Desktop Nav */}
+        <div className="flex items-center gap-4 md:gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-yellow-400 via-amber-500 to-orange-500 shadow-[0_0_35px_rgba(250,204,21,0.6)]">
+            <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 via-amber-500 to-orange-500 shadow-[0_0_25px_rgba(250,204,21,0.5)]">
               <Image
                 src="/assets/icons/logo.svg"
                 alt="Trade Connect"
@@ -18,36 +20,42 @@ const Header = ({ user }: { user: User | null }) => {
                 className="h-6 w-auto"
               />
             </div>
+
+            {/* Hide text on small screens */}
             <span className="hidden sm:inline text-lg font-semibold tracking-tight text-gray-100">
               Trade Connect
             </span>
           </Link>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:block">
             <NavItems />
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
+        {/* Right Section: User or Auth buttons */}
+        <div className="flex items-center gap-2 sm:gap-3">
           {user ? (
             <UserDropDown user={user} />
           ) : (
             <div className="flex items-center gap-2">
               <Link
                 href="/sign-in"
-                className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-yellow-400 transition-colors"
+                className="px-3 py-2 text-xs sm:text-sm font-medium text-gray-300 hover:text-yellow-400 transition-colors"
               >
                 Sign In
               </Link>
+
               <Link
                 href="/sign-up"
-                className="px-4 py-2 text-sm font-medium bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors"
+                className="px-3 py-2 text-xs sm:text-sm font-medium bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors"
               >
                 Get Started
               </Link>
             </div>
           )}
         </div>
+
       </div>
     </header>
   );
