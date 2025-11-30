@@ -18,9 +18,10 @@ const UserDropDown = ({ user }: { user: User }) => {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    await fetch("/api/auth/logout", { method: "POST" });
+    await signOut();
     router.push("/sign-in");
   };
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
