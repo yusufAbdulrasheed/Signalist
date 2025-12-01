@@ -24,10 +24,10 @@ export const sendWelcomeEmail = async ({
   );
 
   const mailOptions = {
-    from: '"Trade Connect" <noreply@gmail.com>',
+    from: '"Signalist" <noreply@gmail.com>',
     to: email,
-    subject: `Welcome to Trade Connect - your stock market toolkit is ready!`,
-    text: `Thanks for joining Trade Connect`,
+    subject: `Welcome to Signalist - your stock market toolkit is ready!`,
+    text: `Thanks for joining Signalist`,
     html: htmlTemplate,
   };
 
@@ -49,7 +49,7 @@ export const sendNewsSummaryEmail = async ({
   ).replace("{{newsContent}}", newsContent);
 
   const mailOptions = {
-    from: `Trade Connect News" <signalist@jsmastery.pro>`,
+    from: `Signalist News" <signalist@jsmastery.pro>`,
     to: email,
     subject: `📈 Market News Summary Today - ${date}`,
     text: `Today's market news summary from Signalist`,
@@ -78,10 +78,10 @@ export const sendPasswordResetOtpEmail = async ({
     .replace("{{expiry}}", `${expiryInMinutes}`);
 
   await transporter.sendMail({
-    from: '"Trade Connect" <noreply@gmail.com>',
+    from: '"Signalist" <noreply@gmail.com>',
     to: email,
-    subject: "Your Trade Connect password reset code",
-    text: `Use ${otp} to reset your Trade Connect password. This code expires in ${expiryInMinutes} minutes.`,
+    subject: "Your Signalist password reset code",
+    text: `Use ${otp} to reset your Signalists password. This code expires in ${expiryInMinutes} minutes.`,
     html: htmlTemplate,
   });
 };
