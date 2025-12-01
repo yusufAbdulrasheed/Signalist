@@ -16,8 +16,8 @@ const Header = async ({ user }: { user: User | null }) => {
               <Image
                 src="/assets/icons/logo-1.svg"
                 alt="Trade Connect"
-                width={50}
-                height={50}
+                width={130}
+                height={120}
                 className="h-6 w-auto"
               />
             </div>
