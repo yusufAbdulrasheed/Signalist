@@ -14,7 +14,7 @@ const Header = async ({ user }: { user: User | null }) => {
           <Link href="/" className="flex items-center gap-2">
             <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gray-700">
               <Image
-                src="/assets/icons/logo-1.svg"
+                src="/assets/icons/logo.svg"
                 alt="Trade Connect"
                 width={130}
                 height={120}
