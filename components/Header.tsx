@@ -12,7 +12,7 @@ const Header = async ({ user }: { user: User | null }) => {
         {/* Left Section: Logo + Desktop Nav */}
         <div className="flex items-center gap-4 md:gap-8">
           <Link href="/" className="flex items-center gap-2">
-            <div className="container header-wrapper">
+            {/* <div className="container header-wrapper">
               <Image
                 src="/assets/icons/logo.svg"
                 alt="Trade Connect"
@@ -20,10 +20,10 @@ const Header = async ({ user }: { user: User | null }) => {
                 height={32}
                 className="h-8 w-auto"
               />
-            </div>
+            </div> */}
 
             {/* Hide text on small screens */}
-            <span className="hidden sm:inline text-lg font-semibold tracking-tight text-gray-100">
+            <span className="text-sm sm:text-base md:text-lg font-semibold tracking-tight text-yellow-600">
               Trade Connect
             </span>
           </Link>
