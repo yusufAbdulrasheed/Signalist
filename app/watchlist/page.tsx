@@ -1,15 +1,21 @@
 import React from "react";
+import Link from "next/link";
 
 export default function WatchlistPage() {
   return (
-    <main className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
+    <main className="min-h-screen bg-gray-950 flex items-center justify-center px-4 relative">
+      <Link
+        href="/dashboard"
+        className="absolute top-6 left-6 text-gray-300 hover:text-yellow-400 transition-colors text-sm md:text-base font-medium"
+      >
+        ← Back to Dashboard
+      </Link>
+
       <div className="text-center animate-fadeIn">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">
           Watchlist
         </h1>
-        <p className="text-gray-400 text-lg md:text-2xl mb-8">
-          Coming Soon
-        </p>
+        <p className="text-gray-400 text-lg md:text-2xl mb-8">Coming Soon</p>
 
         <div className="flex items-center justify-center">
           <div className="w-16 h-16 border-4 border-gray-700 border-t-white rounded-full animate-spin"></div>
@@ -23,4 +29,3 @@ export default function WatchlistPage() {
     </main>
   );
 }
-
