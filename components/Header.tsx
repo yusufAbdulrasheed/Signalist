@@ -13,12 +13,15 @@ const Header = async ({ user }: { user: User | null }) => {
         <div className="flex items-center gap-4 md:gap-8">
           <Link href="/" className="flex items-center">
             <Image
-              src="/assets/icons/logo.svg"
+              src="/assets/icons/logo_1.svg"
               alt="Trade Connect"
               width={140}
               height={32}
               className="h-8 w-auto cursor-pointer"
             />
+            <span className="text-sm sm:text-base md:text-lg font-semibold tracking-tight text-yellow-600">
+              Trade Connect
+            </span>
           </Link>
 
           {/* Desktop Nav */}
